@@ -1,3 +1,8 @@
+/*
+* MFU - Most Frequently Used
+* Author : NAIF M.N.M (2018/E/082)
+*/
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
