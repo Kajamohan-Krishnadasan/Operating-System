@@ -2,21 +2,32 @@
 * MFU - Most Frequently Used
 * Author : NAIF M.N.M (2018/E/082)
 */
+
 package com.os.replacementalgorithm.Algorithms;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class MFU_function {
-    public static int functionMFU(int frameSize, String pagesOrder){
-        String[]  arrayOfPages= pagesOrder.split(" ");
-        ArrayList<String> buffer = new ArrayList<>();
-        ArrayList<Integer> bufferTime=new ArrayList<>();
-        HashMap<String, Integer> pageCount = new HashMap<>();
-        ArrayList<String> order = new ArrayList<>();
-        int pageFault=0;
+    ArrayList<String> buffer = new ArrayList<>();
+    ArrayList<Integer> bufferTime = new ArrayList<>();
+    HashMap<String, Integer> pageCount = new HashMap<>();
+    ArrayList<String> order = new ArrayList<>();
+        
+    public int functionMFU(int frameSize, String pagesOrder){
+        
+//        String[]  arrayOfPages = pagesOrder.split(" ");
+        int pageLength = pagesOrder.length();
+        String arrayOfPages[] = new String[pageLength];
+        
+        for (int i = 0; i < pageLength; i++) {
+            arrayOfPages[i] = String.valueOf(pagesOrder.charAt(i));
+        }
+        
+        int pageFault = 0;
+        
         for (String e:arrayOfPages) {
             if(pageCount.containsKey(e)){
-                pageCount.replace(e,pageCount.get(e)+1);
+                pageCount.replace(e, pageCount.get(e)+1);
             }
             else{
                 pageCount.put(e,1);
@@ -71,9 +82,12 @@ public class MFU_function {
             }
             order.add(buffer.toString());
         }
-        for (String k:order) { //Printing buffer change order
-            System.out.println(k);
-        }
+
         return pageFault;
     }
+    
+    public ArrayList<String> getReplaceOrder(){
+        return order;
+    }
+    
 }
