@@ -281,13 +281,14 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="c0" green="c0" id="lightGray" palette="1" red="c0" type="palette"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Enter String Without Space"/>
+            <Property name="text" type="java.lang.String" value="Enter the String without Space"/>
             <Property name="toolTipText" type="java.lang.String" value="Input"/>
             <Property name="name" type="java.lang.String" value="Name" noResource="true"/>
           </Properties>
           <Events>
             <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="InputFieldFocusGained"/>
             <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="InputFieldFocusLost"/>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="InputFieldKeyPressed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="FrameLabel">
@@ -309,12 +310,13 @@
               <Color blue="c0" green="c0" id="lightGray" palette="1" red="c0" type="palette"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Enter the Frame Size"/>
-            <Property name="toolTipText" type="java.lang.String" value="Input"/>
+            <Property name="toolTipText" type="java.lang.String" value="Frame Size"/>
             <Property name="name" type="java.lang.String" value="Name" noResource="true"/>
           </Properties>
           <Events>
             <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="FrameFieldFocusGained"/>
             <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="FrameFieldFocusLost"/>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="FrameFieldKeyPressed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JSeparator" name="jSeparator1">

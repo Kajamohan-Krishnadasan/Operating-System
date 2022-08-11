@@ -1,34 +1,35 @@
 
 /*
-* MFU - Most Frequently Used
-* Author : NAIF M.N.M (2018/E/082)
+* LFU - Least Frequently Used
+* Author : Gobishangar S. (2018/E/037)
 */
 
 package com.os.replacementalgorithm.Algorithms;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class MFU_function {
-    ArrayList<String> buffer = new ArrayList<>();
+public class LFU_Function {
+    ArrayList<String> order = new ArrayList<>();
     ArrayList<Integer> bufferTime = new ArrayList<>();
     HashMap<String, Integer> pageCount = new HashMap<>();
-    ArrayList<String> order = new ArrayList<>();
+    ArrayList<String> buffer = new ArrayList<>();
+    
+    
+    public int functionLFU(int frameSize, String pagesOrder){
         
-    public int functionMFU(int frameSize, String pagesOrder){
-        
-//        String[]  arrayOfPages = pagesOrder.split(" ");
+//        String[]  arrayOfPages= pagesOrder.split(" "); //split and add all pages
         int pageLength = pagesOrder.length();
         String arrayOfPages[] = new String[pageLength];
-        
+        int pageFault = 0;
         for (int i = 0; i < pageLength; i++) {
             arrayOfPages[i] = String.valueOf(pagesOrder.charAt(i));
         }
         
-        int pageFault = 0;
-        
-        for (String e:arrayOfPages) {
+        for (String e:arrayOfPages) { //passing all pages
+            
             if(pageCount.containsKey(e)){
-                pageCount.replace(e, pageCount.get(e)+1);
+                pageCount.replace(e,pageCount.get(e)+1);
             }
             else{
                 pageCount.put(e,1);
@@ -60,9 +61,9 @@ public class MFU_function {
                 }
                 else{
                     String temp=new String();
-                    int tempCount=0;
+                    int tempCount=Integer.MAX_VALUE;
                     for (String f:buffer) {
-                        if(pageCount.get(f)>tempCount){
+                        if(pageCount.get(f)< tempCount){
                             temp=f;
                             tempCount=pageCount.get(f);
                         }
@@ -75,6 +76,7 @@ public class MFU_function {
                     bufferTime.set(buffer.indexOf(temp),0);
                     buffer.set(buffer.indexOf(temp),e);
                     pageCount.replace(temp,0);
+                    
                     for (int j=0;j<bufferTime.size();j++) {
                         bufferTime.set(j,bufferTime.get(j)+1);
                     }
@@ -83,12 +85,11 @@ public class MFU_function {
             }
             order.add(buffer.toString());
         }
-
+        
         return pageFault;
     }
     
     public ArrayList<String> getReplaceOrder(){
         return order;
     }
-    
 }
