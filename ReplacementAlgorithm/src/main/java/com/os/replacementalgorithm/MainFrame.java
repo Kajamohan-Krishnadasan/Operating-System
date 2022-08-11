@@ -1,6 +1,7 @@
 package com.os.replacementalgorithm;
 
 import java.awt.Color;
+import java.awt.event.KeyEvent;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
@@ -137,7 +138,7 @@ public class MainFrame extends javax.swing.JFrame {
         InputField.setColumns(2);
         InputField.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         InputField.setForeground(java.awt.Color.lightGray);
-        InputField.setText("Enter String Without Space");
+        InputField.setText("Enter the String without Space");
         InputField.setToolTipText("Input");
         InputField.setName("Name"); // NOI18N
         InputField.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -146,6 +147,11 @@ public class MainFrame extends javax.swing.JFrame {
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 InputFieldFocusLost(evt);
+            }
+        });
+        InputField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                InputFieldKeyPressed(evt);
             }
         });
 
@@ -157,7 +163,7 @@ public class MainFrame extends javax.swing.JFrame {
         FrameField.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         FrameField.setForeground(java.awt.Color.lightGray);
         FrameField.setText("Enter the Frame Size");
-        FrameField.setToolTipText("Input");
+        FrameField.setToolTipText("Frame Size");
         FrameField.setName("Name"); // NOI18N
         FrameField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -165,6 +171,11 @@ public class MainFrame extends javax.swing.JFrame {
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 FrameFieldFocusLost(evt);
+            }
+        });
+        FrameField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                FrameFieldKeyPressed(evt);
             }
         });
 
@@ -262,7 +273,7 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_CancelActionPerformed
 
     private void ResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ResetActionPerformed
-        InputField.setText("Enter String Without Space");
+        InputField.setText("Enter the String without Space");
         FrameField.setText("Enter the Frame Size");
         InputField.setForeground(Color.GRAY);
         FrameField.setForeground(Color.GRAY);
@@ -289,12 +300,12 @@ public class MainFrame extends javax.swing.JFrame {
             frameSize = Integer.parseInt(FrameField.getText());
             calculate(frameSize, input);
         }else{
-            JOptionPane.showMessageDialog(this,"Please Check Your Input!!!");
+            JOptionPane.showMessageDialog(this,"Please Check Your Input !!!");
         }
     }//GEN-LAST:event_CalculateActionPerformed
 
     private void InputFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_InputFieldFocusGained
-        if(InputField.getText().contentEquals("Enter String Without Space")){
+        if(InputField.getText().contentEquals("Enter the String without Space")){
             InputField.setText("");
             InputField.setForeground(Color.black);
         }
@@ -321,7 +332,7 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void InputFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_InputFieldFocusLost
         if(InputField.getText().isEmpty()){
-            InputField.setText("Enter String Without Space");
+            InputField.setText("Enter the String without Space");
             InputField.setForeground(Color.GRAY);
         }
     }//GEN-LAST:event_InputFieldFocusLost
@@ -332,6 +343,28 @@ public class MainFrame extends javax.swing.JFrame {
             FrameField.setForeground(Color.GRAY);
         }
     }//GEN-LAST:event_FrameFieldFocusLost
+
+    private void InputFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_InputFieldKeyPressed
+       if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+           FrameField.requestFocus();
+        }
+    }//GEN-LAST:event_InputFieldKeyPressed
+
+    private void FrameFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FrameFieldKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            String input = InputField.getText();
+            String frame = FrameField.getText();
+
+            int frameSize;
+
+            if(isValidInput(input) && isValidInput(frame)){
+                frameSize = Integer.parseInt(FrameField.getText());
+                calculate(frameSize, input);
+            }else{
+                JOptionPane.showMessageDialog(this,"Please Check Your Input !!!");
+            }
+        }
+    }//GEN-LAST:event_FrameFieldKeyPressed
 
     /**
      * @param args the command line arguments

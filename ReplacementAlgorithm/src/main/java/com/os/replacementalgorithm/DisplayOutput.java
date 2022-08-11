@@ -25,30 +25,43 @@ public class DisplayOutput extends javax.swing.JFrame {
         MainPanel = new javax.swing.JPanel();
         HeadingLabel = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        CloseButton = new javax.swing.JButton();
         FIFO = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
-        FIFO1 = new javax.swing.JPanel();
+        jScrollPane9 = new javax.swing.JScrollPane();
+        FIFO_Area = new javax.swing.JTextArea();
+        pageFault1 = new javax.swing.JLabel();
+        LFU = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
-        FIFO2 = new javax.swing.JPanel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        LFU_Area = new javax.swing.JTextArea();
+        pageFault2 = new javax.swing.JLabel();
+        LRU = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTextArea3 = new javax.swing.JTextArea();
-        FIFO3 = new javax.swing.JPanel();
+        jScrollPane10 = new javax.swing.JScrollPane();
+        LRU_Area = new javax.swing.JTextArea();
+        pageFault3 = new javax.swing.JLabel();
+        MRU = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTextArea4 = new javax.swing.JTextArea();
+        jScrollPane11 = new javax.swing.JScrollPane();
+        MFU_Area = new javax.swing.JTextArea();
+        pageFault4 = new javax.swing.JLabel();
         Cancel = new javax.swing.JButton();
         FrameSizeLabel = new javax.swing.JLabel();
         InputLabel = new javax.swing.JLabel();
+        bestPage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(970, 700));
         setResizable(false);
 
         MainPanel.setBackground(new java.awt.Color(255, 255, 255));
         MainPanel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 102, 102), 2, true));
-        MainPanel.setPreferredSize(new java.awt.Dimension(900, 500));
+        MainPanel.setPreferredSize(new java.awt.Dimension(970, 700));
         MainPanel.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
                 MainPanelMouseDragged(evt);
@@ -76,37 +89,46 @@ public class DisplayOutput extends javax.swing.JFrame {
             }
         });
 
-        CloseButton.setBackground(new java.awt.Color(153, 153, 255));
-        CloseButton.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        CloseButton.setForeground(new java.awt.Color(51, 0, 51));
-        CloseButton.setText("X");
-        CloseButton.setToolTipText("Exit");
-        CloseButton.setAlignmentY(1.0F);
-        CloseButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CloseButtonActionPerformed(evt);
-            }
-        });
+        FIFO.setBackground(new java.awt.Color(255, 255, 255));
+        FIFO.setPreferredSize(new java.awt.Dimension(200, 402));
 
         jTextArea1.setEditable(false);
         jTextArea1.setColumns(2);
         jTextArea1.setFont(new java.awt.Font("Segoe UI", 3, 20)); // NOI18N
         jTextArea1.setRows(2);
         jTextArea1.setTabSize(7);
-        jTextArea1.setText("   First In First Out \n        Algorithm");
+        jTextArea1.setText("    First In First Out \n        Algorithm");
         jTextArea1.setAutoscrolls(false);
         jTextArea1.setBorder(null);
+        jTextArea1.setDisabledTextColor(new java.awt.Color(0, 102, 102));
         jTextArea1.setEnabled(false);
         jTextArea1.setFocusable(false);
+        jTextArea1.setSelectionColor(new java.awt.Color(140, 140, 140));
         jScrollPane1.setViewportView(jTextArea1);
+
+        FIFO_Area.setEditable(false);
+        FIFO_Area.setColumns(10);
+        FIFO_Area.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        FIFO_Area.setRows(5);
+        FIFO_Area.setTabSize(5);
+        jScrollPane9.setViewportView(FIFO_Area);
+
+        pageFault1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        pageFault1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        pageFault1.setText("Page Fault is ");
 
         javax.swing.GroupLayout FIFOLayout = new javax.swing.GroupLayout(FIFO);
         FIFO.setLayout(FIFOLayout);
         FIFOLayout.setHorizontalGroup(
             FIFOLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FIFOLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(FIFOLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(FIFOLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(FIFOLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(pageFault1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         FIFOLayout.setVerticalGroup(
@@ -114,8 +136,14 @@ public class DisplayOutput extends javax.swing.JFrame {
             .addGroup(FIFOLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(325, Short.MAX_VALUE))
+                .addGap(15, 15, 15)
+                .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(pageFault1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
+
+        LFU.setBackground(new java.awt.Color(255, 255, 255));
 
         jTextArea2.setEditable(false);
         jTextArea2.setColumns(2);
@@ -125,26 +153,50 @@ public class DisplayOutput extends javax.swing.JFrame {
         jTextArea2.setText("   Least Frequently \n   Used Algorithm");
         jTextArea2.setAutoscrolls(false);
         jTextArea2.setBorder(null);
+        jTextArea2.setDisabledTextColor(new java.awt.Color(0, 102, 102));
         jTextArea2.setEnabled(false);
         jTextArea2.setFocusable(false);
+        jTextArea2.setSelectionColor(new java.awt.Color(140, 140, 140));
         jScrollPane2.setViewportView(jTextArea2);
 
-        javax.swing.GroupLayout FIFO1Layout = new javax.swing.GroupLayout(FIFO1);
-        FIFO1.setLayout(FIFO1Layout);
-        FIFO1Layout.setHorizontalGroup(
-            FIFO1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(FIFO1Layout.createSequentialGroup()
+        LFU_Area.setEditable(false);
+        LFU_Area.setColumns(10);
+        LFU_Area.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        LFU_Area.setRows(5);
+        LFU_Area.setTabSize(5);
+        jScrollPane6.setViewportView(LFU_Area);
+
+        pageFault2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        pageFault2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        pageFault2.setText("Page Fault is ");
+
+        javax.swing.GroupLayout LFULayout = new javax.swing.GroupLayout(LFU);
+        LFU.setLayout(LFULayout);
+        LFULayout.setHorizontalGroup(
+            LFULayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(LFULayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(LFULayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addGroup(LFULayout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(pageFault2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
-        FIFO1Layout.setVerticalGroup(
-            FIFO1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(FIFO1Layout.createSequentialGroup()
+        LFULayout.setVerticalGroup(
+            LFULayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(LFULayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(325, Short.MAX_VALUE))
+                .addGap(15, 15, 15)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addComponent(pageFault2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
+
+        LRU.setBackground(new java.awt.Color(255, 255, 255));
 
         jTextArea3.setEditable(false);
         jTextArea3.setColumns(2);
@@ -155,26 +207,50 @@ public class DisplayOutput extends javax.swing.JFrame {
         jTextArea3.setAutoscrolls(false);
         jTextArea3.setBorder(null);
         jTextArea3.setCaretColor(new java.awt.Color(255, 51, 51));
+        jTextArea3.setDisabledTextColor(new java.awt.Color(0, 102, 102));
         jTextArea3.setEnabled(false);
         jTextArea3.setFocusable(false);
+        jTextArea3.setSelectionColor(new java.awt.Color(140, 140, 140));
         jScrollPane3.setViewportView(jTextArea3);
 
-        javax.swing.GroupLayout FIFO2Layout = new javax.swing.GroupLayout(FIFO2);
-        FIFO2.setLayout(FIFO2Layout);
-        FIFO2Layout.setHorizontalGroup(
-            FIFO2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(FIFO2Layout.createSequentialGroup()
+        LRU_Area.setEditable(false);
+        LRU_Area.setColumns(10);
+        LRU_Area.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        LRU_Area.setRows(5);
+        LRU_Area.setTabSize(5);
+        jScrollPane10.setViewportView(LRU_Area);
+
+        pageFault3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        pageFault3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        pageFault3.setText("Page Fault is ");
+
+        javax.swing.GroupLayout LRULayout = new javax.swing.GroupLayout(LRU);
+        LRU.setLayout(LRULayout);
+        LRULayout.setHorizontalGroup(
+            LRULayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(LRULayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(LRULayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(LRULayout.createSequentialGroup()
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(pageFault3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
-        FIFO2Layout.setVerticalGroup(
-            FIFO2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(FIFO2Layout.createSequentialGroup()
+        LRULayout.setVerticalGroup(
+            LRULayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(LRULayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(325, Short.MAX_VALUE))
+                .addGap(15, 15, 15)
+                .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(pageFault3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
+
+        MRU.setBackground(new java.awt.Color(255, 255, 255));
 
         jTextArea4.setEditable(false);
         jTextArea4.setColumns(2);
@@ -182,29 +258,51 @@ public class DisplayOutput extends javax.swing.JFrame {
         jTextArea4.setRows(2);
         jTextArea4.setTabSize(7);
         jTextArea4.setText("   Most Frequently\n   Used Algorithm");
+        jTextArea4.setAutoscrolls(false);
         jTextArea4.setBorder(null);
         jTextArea4.setCaretColor(new java.awt.Color(255, 255, 0));
+        jTextArea4.setDisabledTextColor(new java.awt.Color(0, 102, 102));
         jTextArea4.setEnabled(false);
         jTextArea4.setFocusable(false);
-        jTextArea4.setOpaque(false);
         jTextArea4.setRequestFocusEnabled(false);
+        jTextArea4.setSelectionColor(new java.awt.Color(140, 140, 140));
         jScrollPane4.setViewportView(jTextArea4);
 
-        javax.swing.GroupLayout FIFO3Layout = new javax.swing.GroupLayout(FIFO3);
-        FIFO3.setLayout(FIFO3Layout);
-        FIFO3Layout.setHorizontalGroup(
-            FIFO3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(FIFO3Layout.createSequentialGroup()
+        MFU_Area.setEditable(false);
+        MFU_Area.setColumns(10);
+        MFU_Area.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        MFU_Area.setRows(5);
+        MFU_Area.setTabSize(5);
+        jScrollPane11.setViewportView(MFU_Area);
+
+        pageFault4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        pageFault4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        pageFault4.setText("Page Fault is ");
+
+        javax.swing.GroupLayout MRULayout = new javax.swing.GroupLayout(MRU);
+        MRU.setLayout(MRULayout);
+        MRULayout.setHorizontalGroup(
+            MRULayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(MRULayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(MRULayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(MRULayout.createSequentialGroup()
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(pageFault4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
-        FIFO3Layout.setVerticalGroup(
-            FIFO3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(FIFO3Layout.createSequentialGroup()
+        MRULayout.setVerticalGroup(
+            MRULayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(MRULayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(325, Short.MAX_VALUE))
+                .addGap(15, 15, 15)
+                .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(pageFault4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         Cancel.setBackground(new java.awt.Color(0, 204, 204));
@@ -227,48 +325,49 @@ public class DisplayOutput extends javax.swing.JFrame {
         InputLabel.setText("Input : ");
         InputLabel.setEnabled(false);
 
+        bestPage.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        bestPage.setText("Best Replacement Algorithm is ");
+        bestPage.setToolTipText("");
+
         javax.swing.GroupLayout MainPanelLayout = new javax.swing.GroupLayout(MainPanel);
         MainPanel.setLayout(MainPanelLayout);
         MainPanelLayout.setHorizontalGroup(
             MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(MainPanelLayout.createSequentialGroup()
-                .addGap(110, 110, 110)
-                .addComponent(HeadingLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 680, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 128, Short.MAX_VALUE)
-                .addComponent(CloseButton, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(MainPanelLayout.createSequentialGroup()
-                .addGap(90, 90, 90)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 720, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MainPanelLayout.createSequentialGroup()
-                .addGap(58, 58, 58)
+                .addGap(55, 75, Short.MAX_VALUE)
+                .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, MainPanelLayout.createSequentialGroup()
+                        .addGap(55, 55, 55)
+                        .addComponent(HeadingLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 680, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(MainPanelLayout.createSequentialGroup()
+                        .addComponent(InputLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 546, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(FrameSizeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(MainPanelLayout.createSequentialGroup()
+                        .addComponent(FIFO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(LFU, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(LRU, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(MRU, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(bestPage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(55, 55, 55))
+            .addGroup(MainPanelLayout.createSequentialGroup()
                 .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(InputLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 546, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MainPanelLayout.createSequentialGroup()
-                            .addComponent(Cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(354, 354, 354))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MainPanelLayout.createSequentialGroup()
-                            .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(FrameSizeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(MainPanelLayout.createSequentialGroup()
-                                    .addComponent(FIFO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(FIFO1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(FIFO2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(FIFO3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGap(58, 58, 58)))))
+                    .addGroup(MainPanelLayout.createSequentialGroup()
+                        .addGap(90, 90, 90)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 720, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(MainPanelLayout.createSequentialGroup()
+                        .addGap(371, 371, 371)
+                        .addComponent(Cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         MainPanelLayout.setVerticalGroup(
             MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(MainPanelLayout.createSequentialGroup()
-                .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(CloseButton, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(MainPanelLayout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(HeadingLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(10, 10, 10)
+                .addComponent(HeadingLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 5, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5)
@@ -276,36 +375,36 @@ public class DisplayOutput extends javax.swing.JFrame {
                     .addComponent(FrameSizeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(InputLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(15, 15, 15)
-                .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(FIFO1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(FIFO2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(FIFO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(FIFO3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
+                .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(FIFO, javax.swing.GroupLayout.DEFAULT_SIZE, 425, Short.MAX_VALUE)
+                    .addComponent(LFU, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(LRU, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(MRU, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(bestPage, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Cancel)
-                .addGap(30, 30, 30))
+                .addGap(14, 14, 14))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(MainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 976, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(MainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(MainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 690, Short.MAX_VALUE)
+                .addComponent(MainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void CloseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CloseButtonActionPerformed
-        this.dispose();
-    }//GEN-LAST:event_CloseButtonActionPerformed
 
     private void HeadingLabelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HeadingLabelMousePressed
         // Get Mouse Position X,Y Co-Ordinates
@@ -370,30 +469,98 @@ public class DisplayOutput extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Cancel;
-    private javax.swing.JButton CloseButton;
     private javax.swing.JPanel FIFO;
-    private javax.swing.JPanel FIFO1;
-    private javax.swing.JPanel FIFO2;
-    private javax.swing.JPanel FIFO3;
+    private javax.swing.JTextArea FIFO_Area;
     private javax.swing.JLabel FrameSizeLabel;
     private javax.swing.JLabel HeadingLabel;
     private javax.swing.JLabel InputLabel;
+    private javax.swing.JPanel LFU;
+    private javax.swing.JTextArea LFU_Area;
+    private javax.swing.JPanel LRU;
+    private javax.swing.JTextArea LRU_Area;
+    private javax.swing.JTextArea MFU_Area;
+    private javax.swing.JPanel MRU;
     private javax.swing.JPanel MainPanel;
+    private javax.swing.JLabel bestPage;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane10;
+    private javax.swing.JScrollPane jScrollPane11;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextArea jTextArea3;
     private javax.swing.JTextArea jTextArea4;
+    private javax.swing.JLabel pageFault1;
+    private javax.swing.JLabel pageFault2;
+    private javax.swing.JLabel pageFault3;
+    private javax.swing.JLabel pageFault4;
     // End of variables declaration//GEN-END:variables
     public void setInputValue(int frameSize, String Input){
-        MFU_function MFU = new MFU_function();
-        MFU.functionMFU(frameSize, Input);
         InputLabel.setText("Input : " + Input);
         FrameSizeLabel.setText("Frame Size : " + frameSize);
+        int MFU_PageFault, FIFO_PageFault, LFU_PageFault, LRU_PageFault;
+        
+        MFU_function MFU = new MFU_function();
+        MFU_PageFault = MFU.functionMFU(frameSize, Input);
+        
+        FIFO_function FIFO = new FIFO_function();
+        FIFO_PageFault = FIFO.functionFIFO(frameSize, Input);
+        
+        MFU_function LFU = new MFU_function();
+        LFU_PageFault = LFU.functionMFU(frameSize, Input);
+        
+        MFU_function LRU = new MFU_function();
+        LRU_PageFault = LRU.functionMFU(frameSize, Input);
+        
+        int[] PageFaults = {FIFO_PageFault, LFU_PageFault, LRU_PageFault, MFU_PageFault};
+        
+        int min = FIFO_PageFault;
+        String[] algorthm ={"First In First Out", "Least Frequently Used", "Least Recently Used", "Most Frequently Used"};
+        String algorthmName = "";
+        
+        
+        String text;
+        text = "";
+        for (int e : FIFO.getReplaceOrder()) {
+            text += e;
+//            +"\n";
+        }
+        
+        FIFO_Area.setText(text);
+        pageFault1.setText("Page Fault is "+ PageFaults[0]);
+        
+        
+        
+        
+        LFU_Area.setText(text);
+        LRU_Area.setText(text);
+        
+        
+        
+        text = "";
+        for (String e : MFU.getReplaceOrder()) {
+            text += e+"\n";
+        }
+        MFU_Area.setText(text);
+        pageFault4.setText("Page Fault is "+ PageFaults[3]);
+        
+        
+        
+        pageFault2.setText("Page Fault is "+ PageFaults[1]);
+        pageFault3.setText("Page Fault is "+ PageFaults[2]);
+        
+        for (int i = 1; i < 3; i++) {
+            if(min > PageFaults[i]){
+                min = PageFaults[i];
+                algorthmName = algorthm[i];
+            }
+        }
+        bestPage.setText("Best Replacement Algorithm is "+ algorthmName);
     }
 
 }
