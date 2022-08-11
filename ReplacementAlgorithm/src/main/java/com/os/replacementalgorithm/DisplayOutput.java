@@ -58,11 +58,6 @@ public class DisplayOutput extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
-        addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                formKeyPressed(evt);
-            }
-        });
 
         MainPanel.setBackground(new java.awt.Color(255, 255, 255));
         MainPanel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 102, 102), 2, true));
@@ -75,11 +70,6 @@ public class DisplayOutput extends javax.swing.JFrame {
         MainPanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 MainPanelMousePressed(evt);
-            }
-        });
-        MainPanel.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                MainPanelKeyPressed(evt);
             }
         });
 
@@ -454,18 +444,6 @@ public class DisplayOutput extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_CancelActionPerformed
 
-    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
-           this.dispose();
-        }
-    }//GEN-LAST:event_formKeyPressed
-
-    private void MainPanelKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MainPanelKeyPressed
-       if(evt.getKeyCode() == KeyEvent.VK_ENTER){
-           this.dispose();
-        }
-    }//GEN-LAST:event_MainPanelKeyPressed
-
     private void CancelKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CancelKeyPressed
        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
            this.dispose();
@@ -540,10 +518,10 @@ public class DisplayOutput extends javax.swing.JFrame {
     private javax.swing.JLabel pageFault3;
     private javax.swing.JLabel pageFault4;
     // End of variables declaration//GEN-END:variables
+    
+    
     public void setInputValue(int frameSize, String Input){
-        
-        // input 70120304230323
-        // frame size 4
+       
         InputLabel.setText("Input : " + Input);
         FrameSizeLabel.setText("Frame Size : " + frameSize);
         int MFU_PageFault, FIFO_PageFault, LFU_PageFault, LRU_PageFault;
@@ -595,8 +573,10 @@ public class DisplayOutput extends javax.swing.JFrame {
         pageFault4.setText("Page Fault is "+ PageFaults[3]);
         
         int min = FIFO_PageFault;
-        String[] algorthm ={"First In First Out", "Least Frequently Used", "Least Recently Used", "Most Frequently Used"};
+        String[] algorthm ={"First In First Out", "Least Frequently Used",
+                            "Least Recently Used", "Most Frequently Used"};
    
+        
         String algorthmName = algorthm[0];
         for (int i = 1; i < 4; i++) {
             if(min > PageFaults[i]){

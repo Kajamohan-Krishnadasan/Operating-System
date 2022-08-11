@@ -2,7 +2,6 @@
 * LRU - Least Recently Used
 * Author : Ibrahim S. (2018/E/045)
 */
-
 package com.os.replacementalgorithm.Algorithms;
 import java.util.*;
 
@@ -33,7 +32,6 @@ public class LRU_Function{
                     pageFault++;
                     
                 }else{
-                    order.add(list.toString());
                     flag.set(PagesArr.indexOf(i), 0);
                 }
                 
